@@ -6,12 +6,17 @@
   align-items: center;
 }
 
-.header-button {
+
+/* Header */
+
+.group-header-button {
   display: flex;
   width: 1000px;
   justify-content: space-between;
   margin:30px;
 }
+
+
 .wrap-table {
   display: flex;
   flex-direction: column;
@@ -47,6 +52,11 @@ th , td {
   justify-content: space-around;
 }
 
+.img-logo {
+  width: 150px;
+  height: 100px;
+  object-fit: contain;
+}
 
 /* Form */
 .wrap-form {

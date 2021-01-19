@@ -58,12 +58,8 @@ export class FormAirline extends Component {
           }]}>
             <Input />
           </Form.Item>
-          <Form.Item label="E-mail" name="email"
+          <Form.Item label="Country" name="country"
             rules={[
-                {
-                  type: 'email',
-                  message: 'The input is not valid E-mail!',
-                },
                 {
                   required: true,
                   message: 'Please input your E-mail!',
@@ -72,11 +68,39 @@ export class FormAirline extends Component {
           >
             <Input />
           </Form.Item>
+          
+          <Form.Item label="Logo Image">
+            <Upload>
+                <Button icon={<UploadOutlined />}>Click to Upload</Button>
+            </Upload>
+          </Form.Item>
+
+          <Form.Item label="Slogan" name="slogan"
+            rules={[
+                {
+                  required: true,
+                  message: 'Please input your slogan!',
+                },
+              ]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item label="Head Quaters" name="head_quaters"
+            rules={[
+                {
+                  required: true,
+                  message: 'Please input your head quaters!',
+                },
+              ]}
+          >
+            <Input />
+          </Form.Item>
+
           <Form.Item label="Website" name="website"
             rules={[
                 {
                   type: 'url',
-                  message: 'The input is not valid E-mail!',
+                  message: 'The input is not valid Website!',
                 },
                 {
                   required: true,
@@ -85,11 +109,6 @@ export class FormAirline extends Component {
               ]}
           >
             <Input  addonBefore="http://" defaultValue="website" />
-          </Form.Item>
-          <Form.Item label="Logo Image">
-            <Upload>
-                <Button icon={<UploadOutlined />}>Click to Upload</Button>
-            </Upload>
           </Form.Item>
           <Form.Item label="DatePicker">
             <DatePicker />

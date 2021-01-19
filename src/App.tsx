@@ -23,11 +23,11 @@ function App() {
       <Link to={btnDetails[property]}>{property}</Link>
     );
   }
-  const buttons = btns.map(btn => <Button>{btn}</Button>)
+  const buttons = btns.map((btn,i) => <Button key={i}  className="header-button">{btn}</Button>)
   return (
     <Router>
       <div className="App">
-      <div className="header-button">{buttons}</div>
+      <div className="group-header-button">{buttons}</div>
        <Switch>
          <Route path="/airline-table">
            <AirlineTable></AirlineTable>

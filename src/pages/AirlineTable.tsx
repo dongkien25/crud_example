@@ -1,33 +1,73 @@
-import { Table } from "antd";
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import GroupActionBtn from "../components/GroupActionBtn";
+import TableHeader from "../components/TableHeader";
 import TitlePage from "../components/TitlePage";
+import { Airline } from "../models/AirlineModel";
+import { fetchAirline } from "../store/actions";
+import { RootState } from "../store/store";
+interface Props {
+  data: [];
+  // isFetching: boolean;
+  fetchData: () => void;
+}
+interface State {}
 
-export class AirlineTable extends Component {
-  render() {
-    const cols = [
-      {
-        title: "ID",
-        dataIndex: "id",
-        key: "id",
-        // render: (text: string) => <a>{text}</a>,
-      },
-      {
-        title: "Name",
-        dataIndex: "name",
-        key: "name",
-        // render: (text: string) => <a>{text}</a>,
-      },
-      { title: "Country", dataIndex: "country", key: "country" },
-      { title: "Logo", dataIndex: "logo", key: "logo" },
-      { title: "Action", key:'action' },
-    ];
+const titlesHeader = ["id", "name", "country", "logo", "action"];
+export class AirlineTable extends Component<Props, State> {
+  constructor(props: Props) {
+    super(props);
+    this.state = {};
+  }
+  componentDidMount() {
+    this.props.fetchData();
+  }
+  airlines = this.props.data;
+  rows = this.airlines.map((airline: Airline,i) => {
     return (
-      <div>
+      <tr key={i}>
+        <td>{airline.id}</td>
+        <td>{airline.name}</td>
+        <td>{airline.country}</td>
+        <td>
+          <img className="img-logo" src={airline.logo}></img>
+        </td>
+        <td>
+          <GroupActionBtn></GroupActionBtn>
+        </td>
+      </tr>
+    );
+  });
+  render() {
+    return (
+      <div className="wrap-table">
         <TitlePage titlePage="Airline Table"></TitlePage>
-        <Table columns={cols} className="table-data"></Table>
+        <table className="table-data">
+          <thead>
+            <TableHeader titles={titlesHeader}></TableHeader>
+          </thead>
+          <tbody className="table-body">
+           {this.rows}
+          </tbody>
+        </table>
       </div>
     );
   }
 }
 
-export default AirlineTable;
+function mapState(state: RootState) {
+  const { 
+    appData : {data},
+  } = state;
+  return {
+    data
+  };
+}
+
+function mapDispatch(dispatch: any) {
+  return {
+    fetchData: () => dispatch(fetchAirline()),
+  };
+}
+
+export default connect(mapState, mapDispatch)(AirlineTable);

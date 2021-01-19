@@ -12,7 +12,7 @@ export class TableHeader extends Component <Props, State>{
     // }
 
     render() {
-        const titlesHeader = this.props.titles.map(title => <th>{title}</th>)
+        const titlesHeader = this.props.titles.map((title,i) => <th key={i}>{title}</th>)
         return (
             <tr className="">
                 {titlesHeader}

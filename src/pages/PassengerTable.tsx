@@ -14,14 +14,14 @@ export class PassengerTable extends Component<Props, State> {
       <div className="wrap-table">
         <TitlePage titlePage="Passenger Table"></TitlePage>
         <table className="table-data">
-          <thead>
+          <thead> 
             <TableHeader titles={titlesHeader}></TableHeader>
           </thead>
           <tbody className="table-body">
             <tr>
-              <td>id</td>
-              <td>name</td>
-              <td>country</td>
+              <td>01</td>
+              <td>Test</td>
+              <td>VietNam</td>
               <td>logo</td>
               <td>
                 <GroupActionBtn></GroupActionBtn>
